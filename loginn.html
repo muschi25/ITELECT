@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - E-Learning Portal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url(".jpg") no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+    }
+
+    .navbar {
+      background-color: #bcb79e;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      color: rgb(0, 0, 0);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 1);
+    }
+
+    .navbar img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 60px);
+    }
+
+    .login-box {
+      border: 2px solid #bcb79e; 
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: px;
+    }
+
+    input, button {
+      width: 95%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+        background-color: #bcb79e;
+  border: 2px solid #000000; 
+  color: #000000;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+
+      cursor: pointer;
+    }
+    button:hover {
+    background-color: #ffffff;
+      border: 2px solid #bcb79e;
+      color: rgb(0, 0, 0);
+}
+
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+
+    .signup-link {
+      margin-top: 15px;
+      font-size: 0.9em;
+    }
+
+    .signup-link a {
+      color: #000000;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+      color: #bcb79e;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <img src="1 (2).png" alt="Logo"> &emsp;
+    <h3>E-Learning Portal</h3>
+  </div>
+
+  <div class="login-container">
+    <div class="login-box">
+      <center> <h2>Login</h2> </center>
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <center> <button onclick="login()">Login</button> </center>
+      <div class="error" id="error"></div>
+      <div class="signup-link">
+       <center> Don’t have an account? <a href="signupp.html">Sign Up</a> </center>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if (!localStorage.getItem("users")) {
+      localStorage.setItem("users", JSON.stringify({ student: "1234" }));
+    }
+
+    function login() {
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
+      const error = document.getElementById("error");
+
+      const users = JSON.parse(localStorage.getItem("users")) || {};
+
+      
+      if (users[user] && users[user] === pass) {
+        localStorage.setItem("loggedInUser", user);
+        window.location.href = "home.html";
+      } else {
+        error.textContent = "Invalid username or password!";
+      }
+    }
+  </script>
+
+</body>
+</html>
