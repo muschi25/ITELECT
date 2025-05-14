@@ -59,7 +59,7 @@
       </a>
     </div>
   </nav>
- <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+ <br> <br> <br> 
   <div class="container text-dark my-5">
     <div class="content-box text-center">
       <h2 class="mb-3"> <b> 📙 CSS for Beginners </b> </h2>
@@ -67,6 +67,178 @@
       <a href="home.html" class="back-button mt-4 d-inline-block">⬅ Back to Dashboard</a>
     </div>
   </div>
+
+  <div class="container my-5">
+  <div class="content-box text-dark text-center">
+    <h2 class="mb-3"><b>What is CSS?</b></h2>
+    <p>
+      CSS stands for <b>Cascading Style Sheets</b>. It is the language used to describe the <b>style and layout</b> of HTML elements on a web page. CSS lets you control how your page looks including colors, fonts, spacing, and responsiveness.
+    </p>
+    <p>
+      HTML builds the structure, while CSS makes it beautiful. With CSS, you can make your websites look professional, consistent, and user-friendly across all devices.
+    </p>
+    <p>
+      In this course, you’ll learn how to use CSS to design elegant layouts, customize visual elements, and create responsive websites.
+    </p>
+  </div>
+</div>
+
+<div class="container my-5">
+  <font face="Arial" color="white" size="8"> <center>  <b> CSS CODE EXAMPLES </b>  </center> </font>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+
+    <!-- 1. Change Text Color -->
+    <div class="col">
+      <div class="card h-100 border border-secondary">
+        <div class="card-body">
+          <h5 class="card-title"> <center> <b> Text Color </b> </center> </h5>
+          <pre><code>p {
+  color: blue;
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Set Background Color -->
+    <div class="col">
+      <div class="card h-100 border border-secondary">
+        <div class="card-body">
+          <h5 class="card-title"> <center> <b> Background Color </b> </center> </h5>
+          <pre><code>body {
+  background-color: #f0f0f0;
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Add Border -->
+    <div class="col">
+      <div class="card h-100 border border-secondary">
+        <div class="card-body">
+          <h5 class="card-title"> <center> <b> Border </b> </center> </h5>
+          <pre><code>div {
+  border: 1px solid black;
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Change Font -->
+    <div class="col">
+      <div class="card h-100 border border-secondary">
+        <div class="card-body">
+          <h5 class="card-title"> <center> <b> Font Style </b> </center> </h5>
+          <pre><code>body {
+  font-family: 'Arial', sans-serif;
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Center Text -->
+    <div class="col">
+      <div class="card h-100 border border-secondary">
+        <div class="card-body">
+          <h5 class="card-title"> <center> <b> Text Alignment </b> </center> </h5>
+          <pre><code>h1 {
+  text-align: center;
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Margin & Padding -->
+    <div class="col">
+      <div class="card h-100 border border-secondary">
+        <div class="card-body">
+          <h5 class="card-title"> <center> <b> Spacing </b> </center> </h5>
+          <pre><code>div {
+  margin: 20px;
+  padding: 10px;
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Box Shadow -->
+    <div class="col">
+      <div class="card h-100 border border-secondary">
+        <div class="card-body">
+          <h5 class="card-title"> <center> <b> Box Shadow </b> </center> </h5>
+          <pre><code>.box {
+  box-shadow: 2px 2px 10px gray;
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Rounded Corners -->
+    <div class="col">
+      <div class="card h-100 border border-secondary">
+        <div class="card-body">
+          <h5 class="card-title"> <center> <b> Border Radius </b> </center> </h5>
+          <pre><code>button {
+  border-radius: 8px;
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. Hover Effect -->
+    <div class="col">
+      <div class="card h-100 border border-secondary">
+        <div class="card-body">
+          <h5 class="card-title"> <center> <b> Hover Effect </b> </center> </h5>
+          <pre><code>a:hover {
+  color: red;
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. Flexbox Layout -->
+    <div class="col">
+      <div class="card h-100 border border-secondary">
+        <div class="card-body">
+          <h5 class="card-title"> <center> <b> Flexbox </b> </center> </h5>
+<pre><code>.container {
+  display: flex;
+  justify-content: center;
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. Grid Layout -->
+    <div class="col">
+      <div class="card h-100 border border-secondary">
+        <div class="card-body">
+          <h5 class="card-title"> <center> <b> CSS Grid </b> </center> </h5>
+<pre><code>.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+ <!-- 12. Media Query -->
+    <div class="col">
+      <div class="card h-100 border border-secondary">
+        <div class="card-body">
+          <h5 class="card-title"> <center> <b> Responsive Design </b> </center> </h5>
+<pre><code>@media (max-width: 600px) {
+  body {
+    background-color: lightgray;
+  }
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 </body>
 </html>
