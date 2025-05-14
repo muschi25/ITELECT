@@ -3,150 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <title>Sign Up - E-Learning Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: url(".jpg") no-repeat center center fixed; /*just incase na meron na bg image*/
+      background: url("bg.jpg") no-repeat center center fixed;
       background-size: cover;
       margin: 0;
     }
 
     .navbar {
       background-color: #bcb79e;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      color: rgb(0, 0, 0);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 1);
     }
 
-    .navbar img {
+    .navbar-brand img {
       height: 40px;
       margin-right: 10px;
     }
 
     .signup-container {
+      min-height: calc(100vh - 60px);
       display: flex;
-      justify-content: center;
       align-items: center;
-      height: calc(100vh - 60px);
+      justify-content: center;
     }
 
     .signup-box {
-      border: 2px solid #bcb79e; 
       background: white;
-      padding: 20px;
-      border-radius: 8px;
+      border: 2px solid #bcb79e;
+      padding: 30px;
+      border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: px;
+      width: 100%;
+      max-width: 400px;
     }
 
-    input, button {
-      width: 95%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+    .btn-custom {
+      background-color: #bcb79e;
+      border: 2px solid #000000;
+      color: #000000;
+      font-weight: bold;
+      transition: all 0.2s ease;
     }
 
-    button {
-        background-color: #bcb79e;
-  border: 2px solid #000000; 
-  color: #000000;
-  padding: 8px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.2s ease;
-
-      cursor: pointer;
-    }
-    button:hover {
+    .btn-custom:hover {
       background-color: #ffffff;
       border: 2px solid #bcb79e;
-      color: rgb(0, 0, 0);
-}
-
-    .error {
-      font-size: 0.9em;
+      color: #000000;
     }
 
-    .login-link {
-      margin-top: 15px;
+    .error {
+      color: red;
       font-size: 0.9em;
+      margin-top: 10px;
     }
 
     .login-link a {
       color: #000000;
-      text-decoration: none;
       font-weight: bold;
+      text-decoration: none;
     }
 
     .login-link a:hover {
-      text-decoration: underline;
       color: #bcb79e;
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-  <div class="navbar">
-    <img src="1 (2).png" alt="Logo"> &emsp;
-    <h3>E-Learning Portal</h3>
-  </div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="1 (2).png" alt="Logo">
+        <span class="fw-bold text-dark">E-Learning Portal</span>
+      </a>
+    </div>
+  </nav>
 
+  <!-- Sign Up Section -->
   <div class="signup-container">
-    <div class="signup-box">
-      <center> <h2>Sign Up</h2> </center>
-      <input type="text" id="signup-username" placeholder="New Username">
-      <input type="password" id="signup-password" placeholder="Password">
-      <input type="password" id="signup-confirm" placeholder="Confirm Password">
-      <center> <button onclick="signup()">Sign Up</button> </center>
-      <div class="error" id="signup-error"></div>
-      <div class="login-link">
-      <center> Already have an account? <a href="loginn.html">Login</a> </center>
+    <div class="signup-box text-center">
+      <h2 class="mb-4"> <b> Sign Up </b> </h2>
+      <input type="text" id="newUsername" class="form-control mb-3" placeholder="Choose a Username">
+      <input type="password" id="newPassword" class="form-control mb-3" placeholder="Choose a Password">
+      <button onclick="signup()" class="btn btn-custom w-100">Create Account</button>
+      <div class="error" id="error"></div>
+      <div class="login-link mt-3">
+        Already have an account? <a href="loginn.html">Login</a>
       </div>
     </div>
   </div>
 
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
     function signup() {
-      const user = document.getElementById("signup-username").value.trim();
-      const pass = document.getElementById("signup-password").value.trim();
-      const confirm = document.getElementById("signup-confirm").value.trim();
-      const error = document.getElementById("signup-error");
+      const username = document.getElementById("newUsername").value.trim();
+      const password = document.getElementById("newPassword").value.trim();
+      const error = document.getElementById("error");
 
-      if (!user || !pass || !confirm) {
-        error.style.color = "red";
-        error.textContent = "All fields are required.";
+      if (!username || !password) {
+        error.textContent = "Please fill in all fields.";
         return;
       }
 
-      if (pass !== confirm) {
-        error.style.color = "red";
-        error.textContent = "Passwords do not match.";
-        return;
+      const users = JSON.parse(localStorage.getItem("users")) || {};
+
+      if (users[username]) {
+        error.textContent = "Username already exists!";
+      } else {
+        users[username] = password;
+        localStorage.setItem("users", JSON.stringify(users));
+        localStorage.setItem("loggedInUser", username);
+        window.location.href = "home.html"; // redirect to dashboard
       }
-
-      let users = JSON.parse(localStorage.getItem("users")) || {};
-
-      if (users[user]) {
-        error.style.color = "red";
-        error.textContent = "Username already exists.";
-        return;
-      }
-
-      users[user] = pass;
-      localStorage.setItem("users", JSON.stringify(users));
-
-      error.style.color = "green";
-      error.textContent = "Sign up successful! Redirecting to login...";
-
-      setTimeout(() => {
-        window.location.href = "loginn.html";
-      }, 1500);
     }
   </script>
-
 </body>
 </html>
